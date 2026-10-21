@@ -40,6 +40,13 @@ function toggleSpinner() {
   spinner.classList.toggle("d-none");
 }
 
+//rating
+function setRating(rating){
+  if(rating >= 8) return "badge-success"
+  if(rating >=5) return "badge-warning"
+  return "badge-danger"
+}
+
 //nested obj to array converter function 
 function convertNestedObjToArr(obj) {
   // let nestedArr = Object.entries(obj);
@@ -103,7 +110,7 @@ function renderMovies(arr) {
                   <h3 id="movieTitle" class="m-0">${movie.title}</h3>
                 </div>
                 <div class="col-2">
-                  <h4 class="badge badge-warning align-self-center p-2">
+                  <h4 class="badge ${setRating(movie.rating)} align-self-center p-2">
                     <span>${movie.rating}</span>
                   </h4>
                 </div>
@@ -302,7 +309,7 @@ async function onUpdate() {
                   <h3 id="movieTitle" class="m-0">${udpatedObj.title}</h3>
                 </div>
                 <div class="col-2">
-                  <h4 class="badge badge-warning align-self-center p-2">
+                  <h4 class="badge ${setRating(movie.rating)} align-self-center p-2">
                     <span>${udpatedObj.rating}</span>
                   </h4>
                 </div>
